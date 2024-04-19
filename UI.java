@@ -44,8 +44,7 @@ public int getMoveRow(int whoseMove, String xName, String oName) {
     int row = 0;
     while (row <= 0 || row >= 7) {
         try {
-            System.out.printf(Constants.GET_ROW_MOVE, getXOrO(whoseMove), getPlayerName(whoseMove, xName, oName));
-            row = scanner.nextInt();
+            row = 5;
             if (row <= 0 || row >= 7) {
                 System.out.println(Constants.INVALID_ROW_OR_COLUMN);
             }

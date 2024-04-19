@@ -28,11 +28,11 @@ public class Constants
     public static final int O_WINS = 42;
     public static final int GAME_OVER = 43;
     public static final int QUIT_PROGRAM = 44;
-    //public static final int INVALID_VALUE = -1; 
+    public static final int INVALID_VALUE = -1; 
     
     // Strings
-    public static final String DIVIDER_STRING = "|---|---|---|";
-    public static final String BOARD_STRING = "| %s | %s | %s |" ;
+    public static final String DIVIDER_STRING = "|---|---|---|---|---|---|---|";
+    public static final String BOARD_STRING = "| %s | %s | %s | %s | %s | %s | %s |" ;
     public static final String GET_PLAYER_NAME = "Player %s: What is your name? -->";
     public static final String TITLE = "Thanks for playing Connect !";
     public static final String GET_ROW_MOVE = "Player %s (%s): Enter the row for your next move -->";

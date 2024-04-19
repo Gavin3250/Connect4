@@ -84,13 +84,32 @@ public class State
 
 
    public int getBoardCell(int row, int col) {
+    // Check if the provided indices are within bounds
+    if (row >= 0 && row < Constants.BOARD_ROW && col >= 0 && col < Constants.BOARD_COLUMN) {
         return this.board[row][col];
+    } else {
+        // If indices are out of bounds, return an invalid value
+        return Constants.INVALID_VALUE;
     }
-
+}
+    public int [][] getBoard() {
+        return this.board;
+    }
 
    public void setBoardCell(int row, int col, int value) {
         this.board[row][col] = value;
     }
-
-
+    
+   public void reset() {
+    // Clear the board and reset other game state variables
+    for (int row = 0; row < Constants.BOARD_ROW; row++) {
+        for (int col = 0; col < Constants.BOARD_COLUMN; col++) {
+            board[row][col] = Constants.BLANK;
+        }
+    }
+    whoseMove = Constants.X; // Reset the starting player to X
+    gameState = Constants.GET_X_NAME; // Reset the game state
+    }
 }
+
+
