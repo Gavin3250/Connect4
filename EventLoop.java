@@ -25,8 +25,15 @@ public class EventLoop {
             state.setGameState(Constants.GET_X_MOVE);
         } else if (gameState == Constants.GET_X_MOVE || gameState == Constants.GET_O_MOVE) {
             ui.printBoard(state);
-            row = ui.getMoveRow(state.getWhoseMove(), state.getXName(), state.getOName());
             col = ui.getMoveCol(state.getWhoseMove(), state.getXName(), state.getOName());
+            row = Constants.BOARD_ROW;
+            for( int r = row; r >= 0 ; r-- ) {
+                if ( state.getBoardCell(r-1, col-1) == Constants.BLANK ) {
+                    row = r;
+                    break;
+                }
+            }
+     
             if (ui.isLegalMove(state, row, col)) {
                 state.setGameState(Constants.MAKE_MOVE);
             } else {
@@ -34,10 +41,12 @@ public class EventLoop {
             }
         } else if (gameState == Constants.MAKE_MOVE) {
             ui.printMove(state, row, col);
-            state.setBoardCell(row, col, state.getWhoseMove());
+            state.setBoardCell(row-1, col-1, state.getWhoseMove());
             state.setGameState(Constants.CHECK_IF_WINNER);
         } else if (gameState == Constants.CHECK_IF_WINNER) {
             if (state.isWinner()) {
+                ui.printMove(state, row, col);
+                state.setBoardCell(row, col-1, state.getWhoseMove());
                 if (state.getWhoseMove() == Constants.X) {
                     state.setGameState(Constants.X_WINS);
                 } else {
